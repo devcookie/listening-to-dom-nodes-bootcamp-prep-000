@@ -178,3 +178,16 @@ You should now understand how to add an event listener, how different event trig
 - [QuirksMode - Event order](http://www.quirksmode.org/js/events_order.html)
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/listening-to-dom-nodes'>Listening To Nodes</a> on Learn.co and start learning to code for free.</p>
+
+const divs = document.querySelectorAll('div')
+ 
+function bubble(e) {
+  // stop! that! propagation!
+  e.stopPropagation()
+ 
+  console.log(this.firstChild.nodeValue.trim() + ' bubbled')
+}
+ 
+for (let i = 0; i < divs.length; i++) {
+  divs[i].addEventListener('click', bubble)
+}
